@@ -1,0 +1,61 @@
+{
+	"name": "EngineTestScene",
+	"viewType": 1,
+	"shaders": [
+		{"name": "default", "data":  ["defaultShader/VertexShaderDefault.GLSL", "defaultShader/FragmentShaderDefault.GLSL"]},
+		{"name": "onlyTexture", "data":  ["OnlyTexture/VertexShaderOT.GLSL", "OnlyTexture/FragmentShaderOT.GLSL"]}
+	],
+	"lights": [
+		{"type": 0, "pos": [ 1.2,  1.0,  1.0], "color": [0.0441, 0.630, 0.103], "dir": [-0.2, -1.0, -0.3]},
+		{"type": 1, "pos": [ 0.7, -1.3,  2.0], "color": [1.0, 1.0, 1.0], "linear": 0.22, "quadratic":  0.20},
+		{"type": 1, "pos": [ 2.3, -3.3, -4.0], "color": [1.0, 1.0, 1.0], "linear": 0.22, "quadratic":  0.20},
+		{"type": 1, "pos": [-4.0,  2.0,-12.0], "color": [1.0, 1.0, 1.0], "linear": 0.22, "quadratic":  0.20},
+		{"type": 1, "pos": [ 0.0,  5.0, -2.0], "color": [1.0, 1.0, 1.0], "linear": 0.22, "quadratic":  0.20},
+		{"type": 1, "pos": [ 0.0,  0.0, -3.0], "color": [1.0, 1.0, 1.0], "linear": 0.22, "quadratic":  0.20},
+		{"type": 2, "pos": [ 0.0,  3.0, -0.2], "color": [1.0, 1.0, 1.0], "linear": 0.22, "quadratic":  0.20, "cutOff": 12.5, "outerCutOff": 17.5, "dir": [-1.0, -1.0, -1.0]}
+	],
+	"objects": {
+		"layerNum": 1,
+		"layer0":{
+			"name":"layer0",
+			"data": [
+				{
+					"name": "backback",
+					"type": "MODEL",
+					"shader": "default",
+					"uv-mapping": true,
+					"calcTangentSpace": true,
+					"data": {
+						"position": [0.0, 5.0, -5.0],
+						"scale": [1.0, 1.0, 1.0],
+						"rotation": {
+							"axis": [0.0, 0.0, 0.0],
+							"degrees": 0.0
+						}
+					},
+					"textures": []
+				},
+				{
+					"name": "brickWall",
+					"type": "BUILDER",
+					"builder-type": "PLANE",
+					"shader": "default",
+					"calcTangentSpace": true,
+					"data": {
+						"position": [0.0, 5.0, -3.5],
+						"scale": [1.0, 1.0, 1.0],
+						"rotation": {
+							"axis": [0.0, 0.0, 0.0],
+							"degrees": 0.0
+						}
+					},
+					"textures": [
+						{"type":  0, "path": "assets/textures/brickwall.jpg", "highlightFocus": 32.0},
+						{"type":  3, "path": "assets/textures/brickwall_normal.jpg", "highlightFocus": 32.0},
+						{"type":  1, "path":  "assets/textures/brickwall_specular.jpg", "highlightFocus":  32.0}
+					]
+				}
+			]
+		}
+	}
+}
