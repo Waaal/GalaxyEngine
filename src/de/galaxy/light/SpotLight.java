@@ -1,0 +1,46 @@
+package de.galaxy.light;
+
+import com.jogamp.opengl.GL4;
+
+import de.galaxy.core.ShaderProgram;
+import de.galaxy.math.GalacticMath;
+import de.galaxy.math.Vector3;
+
+public class SpotLight extends PointLight
+{
+	public SpotLight(Vector3 position, Vector3 direction) 
+	{
+		super(position, direction);
+		type = Light.SPOT_LIGHT;
+	}
+
+	public float cutOff = (float)Math.cos(GalacticMath.DegreeToRadiant(12.5f));
+	public float outerCutOff = (float)Math.cos(GalacticMath.DegreeToRadiant(17.5f));
+	
+	public void setCutOff(float degree) 
+	{
+		cutOff = (float)Math.cos(GalacticMath.DegreeToRadiant(degree));
+	}
+	
+	public void setOuterCutOff(float degree) 
+	{
+		outerCutOff = (float)Math.cos(GalacticMath.DegreeToRadiant(degree));
+	}
+	
+	@Override
+	public void fillShader(GL4 gl, ShaderProgram shader, int number) 
+	{
+		shader.setVec3(gl, "spotLight.position", position);
+		shader.setVec3(gl, "spotLight.direction", direction);
+		
+		shader.setFloat(gl, "spotLight.linear", linear);
+		shader.setFloat(gl, "spotLight.quadratic", quadratic);
+		
+		shader.setFloat(gl, "spotLight.cutOff", cutOff);
+		shader.setFloat(gl, "spotLight.outerCutOff", outerCutOff);
+		
+		shader.setVec3(gl, "spotLight.ambient", color.Mul(ambient));
+		shader.setVec3(gl, "spotLight.diffuse", color.Mul(diffuse));
+		shader.setVec3(gl, "spotLight.specular", color);
+	}
+}
